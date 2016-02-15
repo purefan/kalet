@@ -23,6 +23,8 @@ void showIntro() {
 int main(int argc, char *argv[]) {
     // Read file with most common words
     showIntro();
+    // SUPER important
+    std::locale::global(std::locale("sv_SE"));
 
     std::string sourcePath;
     std::string targetPath;

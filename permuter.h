@@ -29,6 +29,7 @@ private:
     // Utility functions
     void uniqueVector(std::vector<std::wstring>&);
     std::vector<std::wstring> mergeVectors(std::vector<std::wstring>, std::vector<std::wstring>);
+    std::wstring to_upper(std::wstring);
 
     int countLinesInFile(std::string);
     void setWord(std::wstring);

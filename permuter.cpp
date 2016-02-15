@@ -9,6 +9,7 @@
 #include <boost/algorithm/string.hpp>
 #include <codecvt>
 #include <locale>
+#include <clocale>
 #include <cstdlib>
 
 
@@ -72,17 +73,12 @@ std::vector<std::wstring> Permuter::fileToVector(std::string sourceFile) {
 
     std::ifstream hFile(sourceFile);
     if (hFile.is_open()) {
-        typedef std::codecvt_utf8<wchar_t> converter_type;
-        const std::locale empty_locale = std::locale::empty();
-        const converter_type* converter = new converter_type;
-        const std::locale utf8_locale = std::locale(empty_locale, converter);
+        // typedef std::codecvt_utf8<wchar_t> converter_type;
+        // const std::locale empty_locale = std::locale();
+        // const converter_type* converter = new converter_type;
+        // const std::locale utf8_locale = std::locale(empty_locale, converter);
         std::wifstream stream(sourceFile);
-        stream.imbue(utf8_locale);
-        std::wstring line;
-
-
-
-
+        // stream.imbue(utf8_locale);
 
         std::wstring line;
         while (stream.good()) {
@@ -132,17 +128,21 @@ std::vector<std::wstring> Permuter::mixCases(std::wstring original) {
  */
 std::vector<std::wstring> Permuter::mixOfLowerCases(std::wstring original) {
     std::vector<std::wstring> lowerCases;
-    std::cout << "mixOfLowerCases(" << original << ");";
+    std::wstring debug1 = std::wstring(L"mixOfLowerCases(") + original + std::wstring(L");");
+    std::wcout << debug1 << ENDL;
     // int boundChecker = 0;
     //por cada posicion
     //    convierta esa posicion a mayuscula --> Chess, cHess, chEss
 
-    std::wstring temp = original;
+    std::wstring upper = this->to_upper(original);
     // for (std::wstring::iterator ite = original.begin(); ite < original.end(); ite++) {
-    for(std::wstring::size_type i = 0; i < original.size(); ++i) {
-        // do_things_with(str[i]);
-        // std::cout << boost::algorithm::to_lower(*ite) << ENDL;
-        std::cout << "Testing original[" << i << "] = " << original[i] << ENDL;
+    // for(std::wstring::size_type char_pos = 0; char_pos < temp.size(); ++char_pos) {
+    for (std::wstring::iterator it = upper.begin(); it != upper.end(); it++) {
+        for(std::wstring::size_type iteration = 0; iteration < original.size(); ++iteration) {
+            std::wcout << "Testing upper[" <<  *it << "]" <<  ENDL;
+            // std::cout << boost::algorithm::to_lower(*ite) << ENDL;
+            // std::wcout << "Testing original[" << iteration << "," << char_pos << "] = " << original[char_pos] << ENDL;
+        }
     }
 
     /*while(this->hasLowerCase(original) && boundChecker < 10) {
@@ -150,6 +150,13 @@ std::vector<std::wstring> Permuter::mixOfLowerCases(std::wstring original) {
         //original = original.
     }*/
     return lowerCases;
+}
+
+std::wstring Permuter::to_upper(std::wstring original) {
+    for (std::wstring::iterator it = original.begin(); it != original.end(); it++) {
+        *it = towupper(*it);
+    }
+    return original;
 }
 
 /**
@@ -191,11 +198,11 @@ std::vector<std::wstring> Permuter::getPermutations(std::wstring original) {
 
 void Permuter::savePermutationsToFile(std::vector<std::wstring> words) {
     // std::cout << "savePermutationsToFile() -> "
-    std::ofstream store;
+    std::wofstream store;
     store.open(this->targetFile);
 
     for (std::vector<std::wstring>::iterator ite = words.begin(); ite != words.end(); ite++) {
-        std::cout << "savePermutationsToFile(vector<string>) -> Storing: " << *ite << ENDL;
+        std::wcout << std::wstring(L"savePermutationsToFile(vector<string>) -> Storing: ") << *ite << ENDL;
         store << *ite << ENDL;
     }
     store.close();
@@ -206,10 +213,10 @@ void Permuter::run() {
         std::vector<std::wstring> permutations;
         std::cout << this->sourceFile << " <--> " << this->targetFile << ENDL;
         // this->sourceWords = this->fileToVector(this->sourceFile);
-        this->sourceWords.push_back("Tjäna");
+        this->sourceWords.push_back(L"Tjäna");
         std::cout << "Total words to permute: " << this->sourceWords.size() << ENDL;
         for (std::vector<std::wstring>::iterator ite = this->sourceWords.begin(); ite != this->sourceWords.end(); ite++ ) {
-             std::cout << "run() -> " << *ite << ENDL;
+             std::wcout << std::wstring(L"run() -> ") << *ite << ENDL;
              permutations = this->getPermutations(*ite);
              this->savePermutationsToFile(permutations);
         }
