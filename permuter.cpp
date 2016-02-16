@@ -207,8 +207,8 @@ void Permuter::run() {
     if (true || this->fileExists(this->sourceFile) == true) {
         std::vector<std::wstring> permutations;
         std::cout << this->sourceFile << " <--> " << this->targetFile << ENDL;
-        // this->sourceWords = this->fileToVector(this->sourceFile);
-        this->sourceWords.push_back(L"Tjäna");
+        this->sourceWords = this->fileToVector(this->sourceFile);
+        // this->sourceWords.push_back(L"Tjäna");
         std::cout << "Total words to permute: " << this->sourceWords.size() << ENDL;
         for (std::vector<std::wstring>::iterator ite = this->sourceWords.begin(); ite != this->sourceWords.end(); ite++ ) {
              std::wcout << std::wstring(L"run() -> ") << *ite << ENDL;
