@@ -4,7 +4,7 @@ debugger=/usr/local/bin/gdb
 project_root = ./
 #   Where to store the binaries
 target_folder=bin
-
+target_bin=kalet
 # Variables for production
 # prod_lib := $(shell find lib/internal -name "*.cpp" ! -name "*test.cpp") main.cpp
 
@@ -24,9 +24,9 @@ flags=-std=c++11 -Wall -Werror -g
 # Compilation instructions
 all:
 	cd $(project_root)
-	if [ -a $(target_folder)/prod ] ;  then  rm $(target_folder)/prod ;  fi;
+	if [ -a $(target_folder)/${target_bin} ] ;  then  rm $(target_folder)/${target_bin} ;  fi;
 
-	$(compiler) -Wall -std=c++0x main.cpp -o $(target_folder)/prod
+	$(compiler) -Wall -std=c++0x main.cpp -o $(target_folder)/${target_bin}
 test:
 	$(compiler) \
 		$(test_lib) \
@@ -40,4 +40,4 @@ test:
 clean:
 	rm -f $(target_folder)/* *.o
 	rm -f $(target_folder)/test
-	rm -f $(target_folder)/prod
+	rm -f $(target_folder)/${target_bin}
