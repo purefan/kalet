@@ -11,11 +11,11 @@ using namespace std;
 void showIntro() {
     cout << "Dictionary Generator v0.1 - Miguel Espinoza - http://purefan.me" << ENDL;
     cout << ENDL;
-    cout << "[ This program takes words from a file and permutes them into a  ]" << ENDL;
-    cout << "[ dictionary that can be used in brute force attacks.            ]" << ENDL;
-    cout << "[ Intended only for educational purposes, do not use it for evil ]" << ENDL;
-    cout << "[ By using this software you agree to release the author(s) from ]" << ENDL;
-    cout << "[ any liability and responsibility.                              ]" << ENDL;
+    cout << "| This program takes words from a file and permutes them into a  |" << ENDL;
+    cout << "| dictionary that can be used in brute force attacks.            |" << ENDL;
+    cout << "| Intended only for educational purposes, do not use it for evil |" << ENDL;
+    cout << "| By using this software you agree to release the author(s) from |" << ENDL;
+    cout << "| any liability and responsibility.                              |" << ENDL;
     cout << ENDL;
 }
 
