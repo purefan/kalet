@@ -12,8 +12,6 @@
 #include <clocale>
 #include <cstdlib>
 
-
-
 #define ENDL "\n"
 
 Permuter::Permuter() {}
@@ -73,13 +71,7 @@ std::vector<std::wstring> Permuter::fileToVector(std::string sourceFile) {
 
     std::ifstream hFile(sourceFile);
     if (hFile.is_open()) {
-        // typedef std::codecvt_utf8<wchar_t> converter_type;
-        // const std::locale empty_locale = std::locale();
-        // const converter_type* converter = new converter_type;
-        // const std::locale utf8_locale = std::locale(empty_locale, converter);
         std::wifstream stream(sourceFile);
-        // stream.imbue(utf8_locale);
-
         std::wstring line;
         while (stream.good()) {
             std::getline(stream, line);
@@ -127,29 +119,32 @@ std::vector<std::wstring> Permuter::mixCases(std::wstring original) {
  * @return [Chess, CHess, cHess, cHEss,...]
  */
 std::vector<std::wstring> Permuter::mixOfLowerCases(std::wstring original) {
-    std::vector<std::wstring> lowerCases;
-    std::wstring debug1 = std::wstring(L"mixOfLowerCases(") + original + std::wstring(L");");
-    std::wcout << debug1 << ENDL;
-    // int boundChecker = 0;
-    //por cada posicion
-    //    convierta esa posicion a mayuscula --> Chess, cHess, chEss
+    std::vector<std::wstring> lower_cases;
 
     std::wstring upper = this->to_upper(original);
-    // for (std::wstring::iterator ite = original.begin(); ite < original.end(); ite++) {
-    // for(std::wstring::size_type char_pos = 0; char_pos < temp.size(); ++char_pos) {
-    for (std::wstring::iterator it = upper.begin(); it != upper.end(); it++) {
-        for(std::wstring::size_type iteration = 0; iteration < original.size(); ++iteration) {
-            std::wcout << "Testing upper[" <<  *it << "]" <<  ENDL;
-            // std::cout << boost::algorithm::to_lower(*ite) << ENDL;
-            // std::wcout << "Testing original[" << iteration << "," << char_pos << "] = " << original[char_pos] << ENDL;
+    std::wstring temp_string;
+    int original_size = original.size();
+
+    for(std::wstring::size_type current_char = 0; current_char <= original_size; ++current_char) {
+        temp_string = upper;
+        for(std::wstring::size_type iteration = 0; iteration <= (original_size); ++iteration) {
+            // This routine creates duplicated entries, it can certainly be improved
+            temp_string[current_char] = towlower(temp_string[current_char]);
+            lower_cases.push_back(temp_string);
+            temp_string[current_char + iteration] = towlower(temp_string[current_char + iteration]);
+            lower_cases.push_back(temp_string);
         }
     }
 
-    /*while(this->hasLowerCase(original) && boundChecker < 10) {
-        boundChecker++;
-        //original = original.
-    }*/
-    return lowerCases;
+    this->uniqueVector(lower_cases);
+
+    return lower_cases;
+}
+
+void Permuter::printVector(std::vector<std::wstring> original) {
+    for (std::vector<std::wstring>::iterator i = original.begin(); i != original.end(); i++) {
+        std::wcout << *i << ENDL;
+    }
 }
 
 std::wstring Permuter::to_upper(std::wstring original) {
