@@ -1,6 +1,8 @@
 # Kalet
 This project aims to provide an easier way of generating dictionaries to use with Hydra.
 
+Current version 0.2
+
 ### Usage
 `./kalet <source> <target>`
 
@@ -11,13 +13,13 @@ Where `<source>` is a file in which every line is to be permuted and combined; a
 * 0.2 Support multibyte source files
 * 0.3 Change every line to every combination of lower case and upper case
 * 0.4 Insert 1,2,3 and 4 digits [0-9] before and after every letter for every word created on 0.3
-* 0.5 Provide flags to enable/disable a permutation technique 
+* 0.5 Provide flags to enable/disable a permutation technique
 * 0.6 Combine every word once with each word in the file
 
 ### Sample Outputs
 Given the word "tjäna" the following are valid outputs:
 
-* [0.3] - Upper case N+1 letters at a time:  
+* [0.3] - Upper case N+1 letters at a time:
   * `Tjäna`, `tJäna`, `tjÄna`, `tjäNa`, `tjänA`
   * `TJäna`, `tJÄna`, `tjÄNa`, `tjäNA`, `TjänA`
   * `TJÄna`, `tJÄNa`, `tjÄNA`, `TjäNA`, `TJänA`
