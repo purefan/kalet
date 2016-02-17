@@ -1,7 +1,7 @@
 # Kalet
 This project aims to provide an easier way of generating dictionaries to use with Hydra.
 
-Current version 0.2
+Current version 0.4
 
 ### Usage
 `./kalet <source> <target>`

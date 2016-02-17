@@ -13,8 +13,9 @@ public:
     bool allGood();
     void setSourceFile(std::string);
     void setTargetFile(std::string);
-    std::vector<std::wstring> getPermutations(std::wstring);
+    std::vector<std::wstring> generatePasswords(std::wstring);
     std::vector<std::wstring> mixCases(std::wstring);
+    std::vector<std::wstring> addNumbers(std::wstring);
     void run();
 
 private:
@@ -35,6 +36,6 @@ private:
     int countLinesInFile(std::string);
     void setWord(std::wstring);
     std::vector<std::wstring> fileToVector(std::string);
-    void savePermutationsToFile(std::vector<std::wstring>);
+    void savePasswordsToFile(std::vector<std::wstring>);
 
 };
