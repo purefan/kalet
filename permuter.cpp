@@ -11,6 +11,8 @@
 #include <locale>
 #include <clocale>
 #include <cstdlib>
+#include <stdlib.h>
+#include <string>
 
 #define ENDL "\n"
 
@@ -178,13 +180,24 @@ std::vector<std::wstring> Permuter::mergeVectors(std::vector<std::wstring> a, st
 }
 
 std::vector<std::wstring> Permuter::addNumbers(std::vector<std::wstring> original) {
+    std::wstring current_word;
     std::wstring temp;
     std::vector<std::wstring> passwords;
-    // Merge vectors
-    for (std::vector<std::wstring>::iterator ite = original.begin(); ite != original.end(); ite++) {
-
-        passwords.push_back(temp);
+    std::string the_number;
+    int original_size;
+    // Loop through every word
+    for (std::vector<std::wstring>::iterator vec_iterator = original.begin(); vec_iterator != original.end(); vec_iterator++) {
+        current_word = *vec_iterator;
+        original_size = current_word.size();
+        for (std::wstring::size_type current_char = 0; current_char <= original_size; ++current_char) {
+            for (int i = 0; i < 100; ++i) {
+                temp = current_word.substr(0, current_char);
+                temp += std::to_wstring(i); // + "#" +
+                temp += current_word.substr(current_char, (original_size - current_char));
+            }
+        }
     }
+    return passwords;
 }
 
 std::vector<std::wstring> Permuter::generatePasswords(std::wstring original) {
