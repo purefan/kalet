@@ -15,7 +15,7 @@ public:
     void setTargetFile(std::string);
     std::vector<std::wstring> generatePasswords(std::wstring);
     std::vector<std::wstring> mixCases(std::wstring);
-    std::vector<std::wstring> addNumbers(std::wstring);
+    std::vector<std::wstring> addNumbers(std::vector<std::wstring>);
     void run();
 
 private:
