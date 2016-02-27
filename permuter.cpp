@@ -190,10 +190,11 @@ std::vector<std::wstring> Permuter::addNumbers(std::vector<std::wstring> origina
         current_word = *vec_iterator;
         original_size = current_word.size();
         for (std::wstring::size_type current_char = 0; current_char <= original_size; ++current_char) {
-            for (int i = 0; i < 100; ++i) {
+            for (int i = 0; i < 10000; ++i) {
                 temp = current_word.substr(0, current_char);
                 temp += std::to_wstring(i); // + "#" +
                 temp += current_word.substr(current_char, (original_size - current_char));
+                passwords.push_back(temp);
             }
         }
     }
