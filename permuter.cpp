@@ -11,6 +11,8 @@
 #include <locale>
 #include <clocale>
 #include <cstdlib>
+#include <stdlib.h>
+#include <string>
 
 #define ENDL "\n"
 
@@ -177,27 +179,49 @@ std::vector<std::wstring> Permuter::mergeVectors(std::vector<std::wstring> a, st
     return merged;
 }
 
-
-std::vector<std::wstring> Permuter::getPermutations(std::wstring original) {
-    std::vector<std::wstring> permutations;
-    std::vector<std::wstring> mixedCases = this->mixCases(original);
-
-    // Merge vectors
-    permutations.insert(permutations.end(), mixedCases.begin(), mixedCases.end());
-
-    // Remove duplicates
-    this->uniqueVector(permutations);
-
-    return permutations;
+std::vector<std::wstring> Permuter::addNumbers(std::vector<std::wstring> original) {
+    std::wstring current_word;
+    std::wstring temp;
+    std::vector<std::wstring> passwords;
+    std::string the_number;
+    int original_size;
+    // Loop through every word
+    for (std::vector<std::wstring>::iterator vec_iterator = original.begin(); vec_iterator != original.end(); vec_iterator++) {
+        current_word = *vec_iterator;
+        original_size = current_word.size();
+        for (std::wstring::size_type current_char = 0; current_char <= original_size; ++current_char) {
+            for (int i = 0; i < 10000; ++i) {
+                temp = current_word.substr(0, current_char);
+                temp += std::to_wstring(i); // + "#" +
+                temp += current_word.substr(current_char, (original_size - current_char));
+                passwords.push_back(temp);
+            }
+        }
+    }
+    return passwords;
 }
 
-void Permuter::savePermutationsToFile(std::vector<std::wstring> words) {
+std::vector<std::wstring> Permuter::generatePasswords(std::wstring original) {
+    std::vector<std::wstring> passwords;
+    std::vector<std::wstring> mixedCases    = this->mixCases(original);
+    std::vector<std::wstring> numeric       = this->addNumbers(mixedCases);
+
+
+    passwords = this->mergeVectors(mixedCases, numeric);
+
+    // Remove duplicates
+    this->uniqueVector(passwords);
+
+    return passwords;
+}
+
+void Permuter::savePasswordsToFile(std::vector<std::wstring> words) {
     // std::cout << "savePermutationsToFile() -> "
     std::wofstream store;
     store.open(this->targetFile);
 
     for (std::vector<std::wstring>::iterator ite = words.begin(); ite != words.end(); ite++) {
-        std::wcout << std::wstring(L"savePermutationsToFile(vector<string>) -> Storing: ") << *ite << ENDL;
+        std::wcout << std::wstring(L"savePasswordsToFile(vector<string>) -> Storing: ") << *ite << ENDL;
         store << *ite << ENDL;
     }
     store.close();
@@ -207,13 +231,13 @@ void Permuter::run() {
     if (true || this->fileExists(this->sourceFile) == true) {
         std::vector<std::wstring> permutations;
         std::cout << this->sourceFile << " <--> " << this->targetFile << ENDL;
-        // this->sourceWords = this->fileToVector(this->sourceFile);
-        this->sourceWords.push_back(L"Tjäna");
+        this->sourceWords = this->fileToVector(this->sourceFile);
+
         std::cout << "Total words to permute: " << this->sourceWords.size() << ENDL;
         for (std::vector<std::wstring>::iterator ite = this->sourceWords.begin(); ite != this->sourceWords.end(); ite++ ) {
              std::wcout << std::wstring(L"run() -> ") << *ite << ENDL;
-             permutations = this->getPermutations(*ite);
-             this->savePermutationsToFile(permutations);
+             permutations = this->generatePasswords(*ite);
+             this->savePasswordsToFile(permutations);
         }
 
         // std::cout << "permutations[0]: " << permutations[0] << ENDL;
