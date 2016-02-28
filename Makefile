@@ -20,13 +20,14 @@ test_lib := main_test.cpp
 # sql_cipher = -Ilib/external/sqlcipher/src -Llib/external/sqlcipher -lsqlcipher
 
 # Compiler flags
-flags=-std=c++11 -Wall -Werror -g
+flags=-std=c++11 -Wall -Werror -g -v
 # Compilation instructions
 all:
 	cd $(project_root)
 	if [ -a $(target_folder)/${target_bin} ] ;  then  rm $(target_folder)/${target_bin} ;  fi;
 
-	$(compiler) -Wall -std=c++0x main.cpp -o $(target_folder)/${target_bin}
+	# $(compiler) -Wall -std=c++0x main.cpp -o $(target_folder)/${target_bin}
+	$(compiler) ${flags} main.cpp -o $(target_folder)/${target_bin}
 test:
 	$(compiler) \
 		$(test_lib) \
