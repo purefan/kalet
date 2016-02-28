@@ -2,23 +2,23 @@
 #include <vector>
 #include <string>
 
-void Param::set_description(std::string value) {
+void Param::setDescription(std::string value) {
 
 }
 
-void Param::set_short_form(char value) {
+void Param::setShortForm(char value) {
 
 }
 
-void Param::set_long_form(std::string value) {
+void Param::setLongForm(std::string value) {
 
 }
 
-void Param::set_type(std::string value) {
+void Param::setType(std::string value) {
 
 }
 
-void Param::set_value(std::string value) {
+void Param::setValue(std::string value) {
 
 }
 

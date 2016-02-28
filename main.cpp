@@ -28,77 +28,77 @@ int main(int argc, char *argv[]) {
     showIntro();
 
     Param num_range_from = Param();
-    num_range_from.set_description("Tells from which number to start");
-    num_range_from.set_short_form('s');
-    num_range_from.set_long_form("num-range-from");
-    num_range_from.set_type("numeric");
+    num_range_from.setDescription("Tells from which number to start");
+    num_range_from.setShortForm('s');
+    num_range_from.setLongForm("num-range-from");
+    num_range_from.setType("numeric");
 
     Param num_range_to = Param();
-    num_range_to.set_description("Tells the maximum number to be used in the range");
-    num_range_to.set_short_form('w');
-    num_range_to.set_long_form("mix-words");
+    num_range_to.setDescription("Tells the maximum number to be used in the range");
+    num_range_to.setShortForm('w');
+    num_range_to.setLongForm("mix-words");
 
     Param lower_case = Param();
-    lower_case.set_description("Converts every character to lower case: BALL -> [bALL, BaLL, BAlL, BALl, baLL, BalL, BAll, balL, Ball, ball]");
-    lower_case.set_short_form('l');
-    lower_case.set_long_form("lower-case");
+    lower_case.setDescription("Converts every character to lower case: BALL -> [bALL, BaLL, BAlL, BALl, baLL, BalL, BAll, balL, Ball, ball]");
+    lower_case.setShortForm('l');
+    lower_case.setLongForm("lower-case");
 
     Param upper_case = Param();
-    upper_case.set_description("Converts every character to upper case: ball -> [Ball, bAll, baLl, balL, BAll, bALl, baLL, BALl, bALL, BALL]");
-    upper_case.set_short_form('u');
-    upper_case.set_long_form("upper-case");
+    upper_case.setDescription("Converts every character to upper case: ball -> [Ball, bAll, baLl, balL, BAll, bALl, baLL, BALl, bALL, BALL]");
+    upper_case.setShortForm('u');
+    upper_case.setLongForm("upper-case");
 
     Param mix_case = Param();
-    mix_case.set_description("Combines upper and lower cases in every possible way");
-    mix_case.set_short_form('m');
-    mix_case.set_long_form("mixed-case");
+    mix_case.setDescription("Combines upper and lower cases in every possible way");
+    mix_case.setShortForm('m');
+    mix_case.setLongForm("mixed-case");
 
     Param add_numbers_beginning = Param();
-    add_numbers_beginning.set_description("Adds leading numbers to the beginning of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [0BALL, 1BALL, 2BALL, 3BALL, 4BALL, ...]");
-    add_numbers_beginning.set_short_form('n');
-    add_numbers_beginning.set_long_form("leading-numbers");
+    add_numbers_beginning.setDescription("Adds leading numbers to the beginning of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [0BALL, 1BALL, 2BALL, 3BALL, 4BALL, ...]");
+    add_numbers_beginning.setShortForm('n');
+    add_numbers_beginning.setLongForm("leading-numbers");
     add_numbers_beginning.requires(num_range_from);
     add_numbers_beginning.requires(num_range_to);
 
     Param add_numbers_end = Param();
-    add_numbers_end.set_description("Adds trailing numbers of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
-    add_numbers_end.set_short_form('N');
-    add_numbers_end.set_long_form("trailing-numbers");
+    add_numbers_end.setDescription("Adds trailing numbers of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
+    add_numbers_end.setShortForm('N');
+    add_numbers_end.setLongForm("trailing-numbers");
     add_numbers_end.requires(num_range_from);
     add_numbers_end.requires(num_range_to);
 
     Param add_numbers_in_between = Param();
-    add_numbers_in_between.set_description("Adds numbers between each letter. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [B0ALL, BA0LL, BAL0L, B1ALL, BA1LL, ...]");
-    add_numbers_in_between.set_short_form('n');
-    add_numbers_in_between.set_long_form("numbers-beginning");
+    add_numbers_in_between.setDescription("Adds numbers between each letter. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [B0ALL, BA0LL, BAL0L, B1ALL, BA1LL, ...]");
+    add_numbers_in_between.setShortForm('n');
+    add_numbers_in_between.setLongForm("numbers-beginning");
     add_numbers_in_between.requires(num_range_from);
     add_numbers_in_between.requires(num_range_to);
 
     Param mix_words = Param();
-    mix_words.set_description("Mixes words from the source file: [hello, bye, red] -> [hellobye, byehello, hellored, redhello, byered, redbye]");
-    mix_words.set_short_form('w');
-    mix_words.set_long_form("mix-words");
+    mix_words.setDescription("Mixes words from the source file: [hello, bye, red] -> [hellobye, byehello, hellored, redhello, byered, redbye]");
+    mix_words.setShortForm('w');
+    mix_words.setLongForm("mix-words");
 
     Param source_file = Param();
-    source_file.set_description("Tells which file has the words that will be permuted.");
-    source_file.set_short_form('f');
-    source_file.set_long_form("source");
+    source_file.setDescription("Tells which file has the words that will be permuted.");
+    source_file.setShortForm('f');
+    source_file.setLongForm("source");
 
     Param target_file = Param();
-    target_file.set_description("Tells which file will store the permuted words.");
-    target_file.set_short_form('t');
-    target_file.set_long_form("target");
+    target_file.setDescription("Tells which file will store the permuted words.");
+    target_file.setShortForm('t');
+    target_file.setLongForm("target");
 
     std::vector<std::string> arguments(argv + 1, argv + argc);
     Options main_options = Options();
     main_options.registerParams(arguments);
-    main_options.add_param(lower_case);
-    main_options.add_param(upper_case);
-    main_options.add_param(mix_case);
-    main_options.add_param(add_numbers_beginning);
-    main_options.add_param(add_numbers_end);
-    main_options.add_param(add_numbers_in_between);
-    main_options.add_param(mix_words);
+    main_options.addParam(lower_case);
+    main_options.addParam(upper_case);
+    main_options.addParam(mix_case);
+    main_options.addParam(add_numbers_beginning);
+    main_options.addParam(add_numbers_end);
+    main_options.addParam(add_numbers_in_between);
+    main_options.addParam(mix_words);
 
     // SUPER important
     std::locale::global(std::locale("sv_SE"));

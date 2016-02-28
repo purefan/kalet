@@ -10,11 +10,11 @@ class Param {
     std::string description, short_form, long_form;
 
 public:
-    void set_description(std::string);
-    void set_short_form(char);
-    void set_long_form(std::string);
-    void set_type(std::string);
-    void set_value(std::string);
+    void setDescription(std::string);
+    void setShortForm(char);
+    void setLongForm(std::string);
+    void setType(std::string);
+    void setValue(std::string);
     void requires(Param);
 };
 #endif
