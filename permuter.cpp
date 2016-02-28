@@ -1,4 +1,5 @@
 #include "permuter.h"
+#include "options.h"
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fstream>
@@ -244,5 +245,9 @@ void Permuter::run() {
     } else {
         std::cout << "Not everything is ok" << ENDL;
     }
+
+}
+
+void Permuter::set_options(Options main_options) {
 
 }

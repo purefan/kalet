@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include "options.h"
+
 class Permuter {
 public:
     std::wstring currentWord;
@@ -17,6 +19,7 @@ public:
     std::vector<std::wstring> mixCases(std::wstring);
     std::vector<std::wstring> addNumbers(std::vector<std::wstring>);
     void run();
+    void set_options(Options);
 
 private:
     std::vector<std::wstring> sourceWords;
