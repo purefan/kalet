@@ -33,11 +33,14 @@ bool Options::is_command(std::string value) {
     return is_command;
 }
 
-void Options::addParam(Param orig){}
-void Options::printVector(std::vector<std::wstring> original) {
-    for (std::vector<std::wstring>::iterator i = original.begin(); i != original.end(); i++) {
-        std::wcout << *i << ENDL;
+void Options::run_command(std::map<std::string, std::string> command) {
+    std::cout << "Running command: " << command.begin()->first << ENDL;
+    if (command.begin()->first == "help") {
+        this->cmd_help();
     }
+    // this->printVector(command);
+}
+
 void Options::cmd_help() {
     std::cout << "[ This is the cmd_help ]" << ENDL;
     for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
