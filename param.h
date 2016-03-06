@@ -7,7 +7,9 @@ class Param {
     int             int_value;
     bool            bool_value;
 
-    std::string description, short_form, long_form;
+    std::string     description;
+    std::string     long_form;
+    std::string     str_value;
 
 public:
     void setDescription(std::string);
