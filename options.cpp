@@ -38,4 +38,32 @@ void Options::printVector(std::vector<std::wstring> original) {
     for (std::vector<std::wstring>::iterator i = original.begin(); i != original.end(); i++) {
         std::wcout << *i << ENDL;
     }
+/**
+ * @brief Splits cli arguments
+ * @details from "--name=value" to [name] = value
+ * or "--something" to [something] = ""
+ *
+ * @param value A cli argument in the form "-s", "--long" or "--short=val"
+ * @return [description]
+ */
+std::map<std::string, std::string> Options::getParts(std::string value) {
+    std::map <std::string, std::string> out;
+    // Remove leading dashes
+    do {
+        value = value.substr(1);
+    } while ( value.substr(0,1) == "-");
+
+    // Split by =
+    int pos_eq = value.find('=');
+    if (pos_eq != std::string::npos) {
+        std::string name = value.substr(0, pos_eq);
+        value = value.substr(pos_eq + 1);
+        out[name] = value;
+    } else {
+        // Or just store an empty right hand value
+        out[value] = "";
+    }
+
+    return out;
+}
 }
