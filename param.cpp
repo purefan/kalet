@@ -51,7 +51,9 @@ std::string Param::getLongForm() {
 }
 
 std::string Param::getShortForm() {
-    return this->short_form;
+    std::string out;
+    out.push_back(this->short_form);
+    return out;
 }
 
 std::string Param::getValue() {
