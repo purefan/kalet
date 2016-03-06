@@ -8,7 +8,7 @@ class Options {
 
     public:
         bool ok = true;
-        void registerParams(std::vector<std::string>);
+        void registerArgs(std::vector<std::string>);
         void addParam(Param);
         void printVector(std::vector<std::string>);
         void printVector(std::vector<Param>);
