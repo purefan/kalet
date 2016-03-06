@@ -3,9 +3,6 @@
 #define _PARAM_H_
 class Param {
 
-    std::wstring    str_value;
-    int             int_value;
-    bool            bool_value;
 
     std::string     description;
     std::string     long_form;
