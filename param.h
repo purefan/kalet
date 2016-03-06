@@ -9,6 +9,7 @@ class Param {
     std::string     str_value;
 
 public:
+    std::string getDescription();
     void setDescription(std::string);
     void setShortForm(char);
     void setLongForm(std::string);

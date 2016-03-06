@@ -6,6 +6,8 @@ void Param::setDescription(std::string value) {
     this->description = value;
 }
 
+std::string Param::getDescription() {
+    return this->description;
 }
 
 Param::Param() {
