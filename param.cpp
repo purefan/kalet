@@ -3,6 +3,8 @@
 #include <string>
 
 void Param::setDescription(std::string value) {
+    this->description = value;
+}
 
 }
 
