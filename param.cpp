@@ -40,6 +40,12 @@ void Param::setValue(bool value) {
     this->str_value = std::to_string(value);
 }
 
+void Param::setValue(std::string name, std::string value) {
+    if (name == this->getShortForm() || name == this->getLongForm()) {
+        this->str_value = value;
+    }
+}
+
 std::string Param::getLongForm() {
     return this->long_form;
 }

@@ -14,6 +14,7 @@ public:
     void setLongForm(std::string);
     void setType(std::string);
     void setValue(std::string);
+    void setValue(std::string, std::string);
     void requires(Param);
 };
 #endif
