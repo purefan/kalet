@@ -11,6 +11,7 @@ class Options {
         void registerParams(std::vector<std::string>);
         void addParam(Param);
         void printVector(std::vector<std::wstring>);
+        void cmd_help();
         bool is_command(std::string);
         std::map<std::string, std::string> getParts(std::string);
 };

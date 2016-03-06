@@ -38,6 +38,14 @@ void Options::printVector(std::vector<std::wstring> original) {
     for (std::vector<std::wstring>::iterator i = original.begin(); i != original.end(); i++) {
         std::wcout << *i << ENDL;
     }
+void Options::cmd_help() {
+    std::cout << "[ This is the cmd_help ]" << ENDL;
+    for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
+        std::cout << "-" << (*param_ite).getShortForm() << ENDL;
+        std::cout << "  --" << (*param_ite).getLongForm() << "\t\t" << (*param_ite).getDescription() << ENDL;
+    }
+}
+
 /**
  * @brief Splits cli arguments
  * @details from "--name=value" to [name] = value
