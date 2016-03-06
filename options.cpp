@@ -77,4 +77,20 @@ std::map<std::string, std::string> Options::getParts(std::string value) {
 
     return out;
 }
+void Options::printVector(std::vector<std::string> original) {
+    for (std::vector<std::string>::iterator i = original.begin(); i != original.end(); i++) {
+        std::cout << *i << ENDL;
+    }
+}
+void Options::printVector(std::vector<Param> original) {
+    for (std::vector<Param>::iterator i = original.begin(); i != original.end(); i++) {
+        std::cout << (*i).getLongForm() << " = " << (*i).getValue() << ENDL;
+    }
+}
+
+void Options::printVector(std::map<std::string, std::string> original) {
+    for (std::map<std::string, std::string>::iterator i = original.begin(); i != original.end(); i++) {
+        std::cout << (*i).first << " = " << (*i).second << ENDL;
+    }
+}
 }

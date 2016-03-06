@@ -10,7 +10,9 @@ class Options {
         bool ok = true;
         void registerParams(std::vector<std::string>);
         void addParam(Param);
-        void printVector(std::vector<std::wstring>);
+        void printVector(std::vector<std::string>);
+        void printVector(std::vector<Param>);
+        void printVector(std::map<std::string, std::string>);
         void run_command(std::map<std::string, std::string>);
         void cmd_help();
         bool is_command(std::string);
