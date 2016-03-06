@@ -11,5 +11,6 @@ class Options {
         void registerParams(std::vector<std::string>);
         void addParam(Param);
         void printVector(std::vector<std::wstring>);
+        bool is_command(std::string);
 };
 #endif

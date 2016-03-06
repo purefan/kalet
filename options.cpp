@@ -24,6 +24,13 @@ void Options::registerArgs(std::vector<std::string> args){
     // This might fail when there are more than one command
     this->run_command(commands);
 }
+
+bool Options::is_command(std::string value) {
+    bool is_command = false;
+    if (value.find("help") != std::string::npos) {
+        is_command = true;
+    }
+    return is_command;
 }
 
 void Options::addParam(Param orig){}
