@@ -5,13 +5,13 @@
 #define _OPTIONS_H_
 class Options {
     private:
-        // 2 Types of arguments: flags and commands
-        std::map<std::string, bool> commands; // like -v --verbose -h --help
+        // like -v --verbose -h --help
+        std::map<std::string, bool> commands;
 
+        // like --source-file=<path>
         std::vector<Param> internal_params;
 
     public:
-        bool ok = true;
         void registerArgs(std::vector<std::string>);
         void addParam(Param);
         void printVector(std::vector<std::string>);
