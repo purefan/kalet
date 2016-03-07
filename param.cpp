@@ -11,7 +11,7 @@ std::string Param::getDescription() {
 }
 
 Param::Param() {
-    this->allow_empty = true;
+    this->allow_empty = false;
 }
 
 void Param::requires(Param requireds) {}
