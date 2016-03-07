@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <boost/algorithm/string.hpp>
+
 /**
  * @brief Stores a vector of parameters comming from command line
  * @param args vector of strings
@@ -112,6 +114,8 @@ bool Options::areParamsOk() {
     std::cout << "internal_params:" << ENDL;
     this->printVector(this->internal_params);
     return true;
+}
+
 std::string Options::operator[](std::string param) {
     param = this->canonicalizeString(param);
     std::string temp_long_name;
@@ -124,4 +128,16 @@ std::string Options::operator[](std::string param) {
     }
     return "";
 }
+
+std::string Options::canonicalizeString(std::string original) {
+    original = boost::to_lower_copy<std::string>(original);
+    int dash_pos = original.find("-");
+    if (dash_pos != std::string::npos) {
+        original.replace(dash_pos, 1, "");
+    }
+    int underline_pos = original.find("_");
+    if (underline_pos != std::string::npos) {
+        original.replace(underline_pos, 1, "");
+    }
+    return original;
 }

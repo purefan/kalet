@@ -24,5 +24,6 @@ class Options {
         std::map<std::string, std::string> getParts(std::string);
         void cmdHelp();
         std::string operator[](std::string);
+        std::string canonicalizeString(std::string);
 };
 #endif
