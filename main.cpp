@@ -36,7 +36,9 @@ int main(int argc, char *argv[]) {
     Param num_range_to = Param();
     num_range_to.setDescription("Tells the maximum number to be used in the range");
     num_range_to.setShortForm('w');
-    num_range_to.setLongForm("mix-words");
+    num_range_to.setLongForm("num-range-to");
+
+
 
     Param lower_case = Param();
     lower_case.setDescription("Converts every character to lower case: BALL -> [bALL, BaLL, BAlL, BALl, baLL, BalL, BAll, balL, Ball, ball]");
