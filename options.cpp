@@ -112,4 +112,16 @@ bool Options::areParamsOk() {
     std::cout << "internal_params:" << ENDL;
     this->printVector(this->internal_params);
     return true;
+std::string Options::operator[](std::string param) {
+    param = this->canonicalizeString(param);
+    std::string temp_long_name;
+    for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
+        temp_long_name = (*param_ite).getLongForm();
+        temp_long_name = this->canonicalizeString(temp_long_name);
+        if (temp_long_name == param) {
+            return (*param_ite).getValue();
+        }
+    }
+    return "";
+}
 }

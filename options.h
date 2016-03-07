@@ -23,5 +23,6 @@ class Options {
         bool hasCommands();
         std::map<std::string, std::string> getParts(std::string);
         void cmdHelp();
+        std::string operator[](std::string);
 };
 #endif
