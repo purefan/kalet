@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
     // SUPER important
     std::locale::global(std::locale("sv_SE"));
 
-    if (main_options.ok) {
+    if (main_options.areParamsOk()) {
         Permuter myPermuter = Permuter();
         myPermuter.set_options(main_options);
 

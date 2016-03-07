@@ -93,4 +93,14 @@ void Options::printVector(std::map<std::string, std::string> original) {
         std::cout << (*i).first << " = " << (*i).second << ENDL;
     }
 }
+
+bool Options::areParamsOk() {
+    // 1. Check that there are params to check
+    // 2.0 Check if any of the params has a dependency
+    // 2.1 Check if they fulfill the dependency
+    std::cout << "cli_params:" << ENDL;
+    this->printVector(this->cli_params);
+    std::cout << "internal_params:" << ENDL;
+    this->printVector(this->internal_params);
+    return true;
 }
