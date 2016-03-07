@@ -91,7 +91,6 @@ int main(int argc, char *argv[]) {
 
     std::vector<std::string> arguments(argv + 1, argv + argc);
     Options main_options = Options();
-    main_options.registerParams(arguments);
     main_options.addParam(lower_case);
     main_options.addParam(upper_case);
     main_options.addParam(mix_case);
@@ -99,6 +98,7 @@ int main(int argc, char *argv[]) {
     main_options.addParam(add_numbers_end);
     main_options.addParam(add_numbers_in_between);
     main_options.addParam(mix_words);
+    main_options.registerArgs(arguments);
 
     // SUPER important
     std::locale::global(std::locale("sv_SE"));
