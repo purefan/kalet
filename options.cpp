@@ -12,7 +12,7 @@ void Options::registerArgs(std::vector<std::string> args){
     for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
         for (std::vector<std::string>::iterator args_ite = args.begin(); args_ite != args.end(); args_ite++) {
             parts = this->getParts( (*args_ite));
-            if (this->is_command(parts.begin()->first)) {
+            if (this->isCommand(parts.begin()->first)) {
                 commands[parts.begin()->first] = parts.begin()->second;
             } else {
                 // The Param ignores invalid assignments
@@ -25,7 +25,7 @@ void Options::registerArgs(std::vector<std::string> args){
     this->run_command(commands);
 }
 
-bool Options::is_command(std::string value) {
+bool Options::isCommand(std::string value) {
     bool is_command = false;
     if (value.find("help") != std::string::npos) {
         is_command = true;
