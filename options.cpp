@@ -30,15 +30,23 @@ bool Options::isCommand(std::string value) {
     return is_command;
 }
 
-void Options::runCommands(std::map<std::string, std::string> command) {
-    std::cout << "Running command: " << command.begin()->first << ENDL;
-    if (command.begin()->first == "help") {
-        this->cmd_help();
+void Options::runCommands() {
+    std::cout << "Options::runCommands()" << ENDL;
+    for(std::map<std::string, bool>::iterator command_ite = this->commands.begin(); command_ite != this->commands.end(); command_ite++) {
+        std::cout << "Options::runCommands() -> Running command " << (*command_ite).first << ENDL;
+        if ((*command_ite).first == "help") {
+            this->cmdHelp();
+        }
     }
+
     // this->printVector(command);
 }
 
-void Options::cmd_help() {
+bool Options::hasCommands() {
+    return this->commands.size() > 0;
+}
+
+void Options::cmdHelp() {
     std::cout << "[ This is the cmd_help ]" << ENDL;
     for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
         std::cout << "-" << (*param_ite).getShortForm() << ENDL;

@@ -17,10 +17,11 @@ class Options {
         void printVector(std::vector<std::string>);
         void printVector(std::vector<Param>);
         void printVector(std::map<std::string, std::string>);
-        void runCommands(std::map<std::string, std::string>);
-        void cmd_help();
+        void runCommands();
         bool areParamsOk();
         bool isCommand(std::string);
+        bool hasCommands();
         std::map<std::string, std::string> getParts(std::string);
+        void cmdHelp();
 };
 #endif

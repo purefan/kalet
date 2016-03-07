@@ -108,13 +108,16 @@ int main(int argc, char *argv[]) {
     std::locale::global(std::locale("sv_SE"));
 
     if (main_options.areParamsOk()) {
-        Permuter myPermuter = Permuter();
-        myPermuter.set_options(main_options);
+        if (main_options.hasCommands()) {
+            main_options.runCommands();
+        } else {
+            Permuter myPermuter = Permuter();
+            myPermuter.set_options(main_options);
 
-        if (myPermuter.allGood() == true) {
-            myPermuter.run();
+            if (myPermuter.allGood() == true) {
+                myPermuter.run();
+            }
         }
-
     }
 
     return 0;
