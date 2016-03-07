@@ -82,13 +82,13 @@ int main(int argc, char *argv[]) {
     Param source_file = Param();
     source_file.setDescription("Tells which file has the words that will be permuted.");
     source_file.setShortForm('f');
-    source_file.setLongForm("source");
+    source_file.setLongForm("source-file");
     source_file.setAllowEmpty();
 
     Param target_file = Param();
     target_file.setDescription("Tells which file will store the permuted words.");
     target_file.setShortForm('t');
-    target_file.setLongForm("target");
+    target_file.setLongForm("target-file");
     target_file.setAllowEmpty();
 
     std::vector<std::string> arguments(argv + 1, argv + argc);
