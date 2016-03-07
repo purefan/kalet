@@ -98,6 +98,8 @@ int main(int argc, char *argv[]) {
     main_options.addParam(add_numbers_end);
     main_options.addParam(add_numbers_in_between);
     main_options.addParam(mix_words);
+    main_options.addParam(source_file);
+    main_options.addParam(target_file);
     main_options.registerArgs(arguments);
 
     // SUPER important
