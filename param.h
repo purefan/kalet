@@ -3,12 +3,15 @@
 #define _PARAM_H_
 class Param {
 
+    char            short_form;
 
     std::string     description;
     std::string     long_form;
     std::string     str_value;
+    bool            allow_empty;
 
 public:
+    Param();
     std::string getShortForm();
     std::string getLongForm();
     std::string getValue();
@@ -21,5 +24,6 @@ public:
     void setValue(bool);
     void setValue(std::string, std::string);
     void requires(Param);
+    void require_not_empty();
 };
 #endif
