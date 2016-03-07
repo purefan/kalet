@@ -68,3 +68,7 @@ std::string Param::getValue() {
 void Param::setAllowEmpty() {
     this->allow_empty = true;
 }
+
+bool Param::allowsEmpty() {
+    return this->allow_empty;
+}

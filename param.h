@@ -3,19 +3,22 @@
 #define _PARAM_H_
 class Param {
 
+    bool            allow_empty;
     char            short_form;
 
     std::string     description;
     std::string     long_form;
     std::string     str_value;
-    bool            allow_empty;
+
 
 public:
     Param();
+
     std::string getShortForm();
     std::string getLongForm();
     std::string getValue();
     std::string getDescription();
+
     void setDescription(std::string);
     void setShortForm(char);
     void setLongForm(std::string);
@@ -27,5 +30,7 @@ public:
 
     // By default a param does not allow empty values
     void setAllowEmpty();
+    bool allowsEmpty();
+
 };
 #endif
