@@ -31,11 +31,11 @@ bool Options::isCommand(std::string value) {
 }
 
 void Options::runCommands() {
-    std::cout << "Options::runCommands()" << ENDL;
     for(std::map<std::string, bool>::iterator command_ite = this->commands.begin(); command_ite != this->commands.end(); command_ite++) {
-        std::cout << "Options::runCommands() -> Running command " << (*command_ite).first << ENDL;
         if ((*command_ite).first == "help") {
             this->cmdHelp();
+        } else {
+            std::cerr << "This command is invalid: " << (*command_ite).first << ENDL;
         }
     }
 
