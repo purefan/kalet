@@ -69,8 +69,8 @@ int main(int argc, char *argv[]) {
 
     Param add_numbers_in_between = Param();
     add_numbers_in_between.setDescription("Adds numbers between each letter. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [B0ALL, BA0LL, BAL0L, B1ALL, BA1LL, ...]");
-    add_numbers_in_between.setShortForm('n');
-    add_numbers_in_between.setLongForm("numbers-beginning");
+    add_numbers_in_between.setShortForm('i');
+    add_numbers_in_between.setLongForm("numbers-between");
     add_numbers_in_between.setRequires(num_range_from);
     add_numbers_in_between.setRequires(num_range_to);
 
