@@ -77,6 +77,11 @@ std::map<std::string, std::string> Options::getParts(std::string value) {
 
     return out;
 }
+
+void Options::addParam(Param orig){
+    this->internal_params.push_back(orig);
+}
+
 void Options::printVector(std::vector<std::string> original) {
     for (std::vector<std::string>::iterator i = original.begin(); i != original.end(); i++) {
         std::cout << *i << ENDL;

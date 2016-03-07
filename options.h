@@ -1,10 +1,12 @@
 #include "param.h"
+#include <map>
 
 #ifndef _OPTIONS_H_
 #define _OPTIONS_H_
 class Options {
     private:
         std::vector<std::string> cli_params;
+        std::vector<Param> internal_params;
 
     public:
         bool ok = true;

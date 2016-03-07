@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     num_range_from.setDescription("Tells from which number to start");
     num_range_from.setShortForm('s');
     num_range_from.setLongForm("num-range-from");
-    num_range_from.setType("numeric");
+
 
     Param num_range_to = Param();
     num_range_to.setDescription("Tells the maximum number to be used in the range");

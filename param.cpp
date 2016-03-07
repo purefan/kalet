@@ -26,12 +26,13 @@ void Param::setLongForm(std::string long_form) {
 
 void Param::setValue(std::string value) {
     std::cout << "1. Setting value " << value << ENDL;
-    // get short form from value
-    int pos_eq = value.find('=');
-    std::string name = value.substr(1, pos_eq - 1);
-    value = value.substr(pos_eq + 1);
-    std::cout << "name: " << name << " and value: " << value << ENDL;
     this->str_value = value;
+    /*if (name == this->getLongForm() || name == this->getShortForm()) {
+
+    }
+    else {
+        std::cout << "The short value (" << this->getShortForm() << " does not match --> " << name << ENDL;
+    }*/
 }
 
 void Param::setValue(int value) {
