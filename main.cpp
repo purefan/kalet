@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
     add_numbers_beginning.requires(num_range_to);
 
     Param add_numbers_end = Param();
-    add_numbers_end.setDescription("Adds trailing numbers of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
+    add_numbers_end.setDescription("Adds trailing numbers to the end of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
     add_numbers_end.setShortForm('N');
     add_numbers_end.setLongForm("trailing-numbers");
     add_numbers_end.requires(num_range_from);
