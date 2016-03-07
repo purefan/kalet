@@ -14,7 +14,7 @@ Param::Param() {
     this->allow_empty = false;
 }
 
-void Param::requires(Param requireds) {}
+void Param::setRequires(Param requireds) {}
 
 void Param::setShortForm(char short_form) {
     this->short_form = short_form;
@@ -65,6 +65,6 @@ std::string Param::getValue() {
     return this->str_value;
 }
 
-void Param::require_not_empty() {
-    this->allow_empty = false;
+void Param::setAllowEmpty() {
+    this->allow_empty = true;
 }

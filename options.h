@@ -17,7 +17,7 @@ class Options {
         void printVector(std::vector<std::string>);
         void printVector(std::vector<Param>);
         void printVector(std::map<std::string, std::string>);
-        void run_command(std::map<std::string, std::string>);
+        void runCommands(std::map<std::string, std::string>);
         void cmd_help();
         bool areParamsOk();
         bool isCommand(std::string);

@@ -57,22 +57,22 @@ int main(int argc, char *argv[]) {
     add_numbers_beginning.setDescription("Adds leading numbers to the beginning of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [0BALL, 1BALL, 2BALL, 3BALL, 4BALL, ...]");
     add_numbers_beginning.setShortForm('n');
     add_numbers_beginning.setLongForm("leading-numbers");
-    add_numbers_beginning.requires(num_range_from);
-    add_numbers_beginning.requires(num_range_to);
+    add_numbers_beginning.setRequires(num_range_from);
+    add_numbers_beginning.setRequires(num_range_to);
 
     Param add_numbers_end = Param();
     add_numbers_end.setDescription("Adds trailing numbers to the end of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
     add_numbers_end.setShortForm('N');
     add_numbers_end.setLongForm("trailing-numbers");
-    add_numbers_end.requires(num_range_from);
-    add_numbers_end.requires(num_range_to);
+    add_numbers_end.setRequires(num_range_from);
+    add_numbers_end.setRequires(num_range_to);
 
     Param add_numbers_in_between = Param();
     add_numbers_in_between.setDescription("Adds numbers between each letter. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [B0ALL, BA0LL, BAL0L, B1ALL, BA1LL, ...]");
     add_numbers_in_between.setShortForm('n');
     add_numbers_in_between.setLongForm("numbers-beginning");
-    add_numbers_in_between.requires(num_range_from);
-    add_numbers_in_between.requires(num_range_to);
+    add_numbers_in_between.setRequires(num_range_from);
+    add_numbers_in_between.setRequires(num_range_to);
 
     Param mix_words = Param();
     mix_words.setDescription("Mixes words from the source file: [hello, bye, red] -> [hellobye, byehello, hellored, redhello, byered, redbye]");
@@ -83,13 +83,13 @@ int main(int argc, char *argv[]) {
     source_file.setDescription("Tells which file has the words that will be permuted.");
     source_file.setShortForm('f');
     source_file.setLongForm("source");
-    source_file.require_not_empty();
+    source_file.setAllowEmpty();
 
     Param target_file = Param();
     target_file.setDescription("Tells which file will store the permuted words.");
     target_file.setShortForm('t');
     target_file.setLongForm("target");
-    target_file.require_not_empty();
+    target_file.setAllowEmpty();
 
     std::vector<std::string> arguments(argv + 1, argv + argc);
     Options main_options = Options();

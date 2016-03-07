@@ -23,7 +23,9 @@ public:
     void setValue(int);
     void setValue(bool);
     void setValue(std::string, std::string);
-    void requires(Param);
-    void require_not_empty();
+    void setRequires(Param);
+
+    // By default a param does not allow empty values
+    void setAllowEmpty();
 };
 #endif
