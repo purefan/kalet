@@ -114,23 +114,6 @@ int main(int argc, char *argv[]) {
         }
 
     }
-    std::string sourcePath;
-    std::string targetPath;
-
-    if (argc > 1) {
-        sourcePath = argv[1];
-    } else {
-        cout << "1. Path to a file with common words to permute: ";
-        getline(cin, sourcePath);
-    }
-
-    if (argc > 2) {
-        targetPath = argv[2];
-    } else {
-        cout << "2. Path to the target file: ";
-        getline(cin, targetPath);
-    }
-
 
     return 0;
 }
