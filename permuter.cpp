@@ -248,6 +248,6 @@ void Permuter::run() {
 
 }
 
-void Permuter::set_options(Options main_options) {
-
+void Permuter::setOptions(Options main_options) {
+    this->options = main_options;
 }

@@ -7,6 +7,7 @@ public:
     std::wstring currentWord;
     std::string sourceFile;
     std::string targetFile;
+    Options options;
 
     // This constructor sets the path to the file with common words
     Permuter();
@@ -19,7 +20,7 @@ public:
     std::vector<std::wstring> mixCases(std::wstring);
     std::vector<std::wstring> addNumbers(std::vector<std::wstring>);
     void run();
-    void set_options(Options);
+    void setOptions(Options);
 
 private:
     std::vector<std::wstring> sourceWords;

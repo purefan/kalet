@@ -112,7 +112,7 @@ int main(int argc, char *argv[]) {
             main_options.runCommands();
         } else {
             Permuter myPermuter = Permuter();
-            myPermuter.set_options(main_options);
+            myPermuter.setOptions(main_options);
 
             if (myPermuter.allGood() == true) {
                 myPermuter.run();
