@@ -20,9 +20,11 @@
 Permuter::Permuter() {}
 
 bool Permuter::allGood() {
-    return true ||
-        (this->fileExists(this->sourceFile) &&
-                this->canWriteToFile(this->targetFile));
+    std::cout << "Permuter::allGood() -> " << this->options["source-File"] << ENDL;
+    bool source_exists = this->fileExists(this->options["source-file"]);
+    bool can_write_to_target = this->canWriteToFile(this->options["target-file"]);
+
+    return source_exists && can_write_to_target;
 }
 
 /**
