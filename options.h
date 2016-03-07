@@ -5,7 +5,9 @@
 #define _OPTIONS_H_
 class Options {
     private:
-        std::vector<std::string> cli_params;
+        // 2 Types of arguments: flags and commands
+        std::map<std::string, bool> commands; // like -v --verbose -h --help
+
         std::vector<Param> internal_params;
 
     public:
