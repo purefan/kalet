@@ -107,6 +107,21 @@ void Options::printVector(std::map<std::string, std::string> original) {
 }
 
 bool Options::areParamsOk() {
+    // Cnat be wrong if they dont exist
+    if (this->internal_params.size() < 1) {
+        return true;
+    }
+
+    // Check for required params
+    Param temp_param;
+    for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
+        temp_param = (*param_ite);
+        if (!temp_param.allowsEmpty() && temp_param.getValue().size() < 1) {
+            std::cerr << "The param " << temp_param.getLongForm() << " does not allow an empty value" << ENDL;
+            return false;
+        }
+    }
+    // Assert uniqueness of
     // 1. Check that there are params to check
     // 2.0 Check if any of the params has a dependency
     // 2.1 Check if they fulfill the dependency
