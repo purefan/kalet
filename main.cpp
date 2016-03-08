@@ -49,11 +49,14 @@ int main(int argc, char *argv[]) {
     upper_case.setDescription("Converts every character to upper case: ball -> [Ball, bAll, baLl, balL, BAll, bALl, baLL, BALl, bALL, BALL]");
     upper_case.setShortForm('u');
     upper_case.setLongForm("upper-case");
+    upper_case.setAllowEmpty();
 
     Param mix_case = Param();
     mix_case.setDescription("Combines upper and lower cases in every possible way");
     mix_case.setShortForm('m');
     mix_case.setLongForm("mixed-case");
+    mix_case.setAllowEmpty();
+
 
     Param add_numbers_beginning = Param();
     add_numbers_beginning.setDescription("Adds leading numbers to the beginning of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [0BALL, 1BALL, 2BALL, 3BALL, 4BALL, ...]");
@@ -61,6 +64,8 @@ int main(int argc, char *argv[]) {
     add_numbers_beginning.setLongForm("leading-numbers");
     add_numbers_beginning.setRequires(num_range_from);
     add_numbers_beginning.setRequires(num_range_to);
+    add_numbers_beginning.setAllowEmpty();
+
 
     Param add_numbers_end = Param();
     add_numbers_end.setDescription("Adds trailing numbers to the end of the word. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [BALL0, BALL1, BALL2, BALL3, BALL4, ...]");
@@ -68,6 +73,7 @@ int main(int argc, char *argv[]) {
     add_numbers_end.setLongForm("trailing-numbers");
     add_numbers_end.setRequires(num_range_from);
     add_numbers_end.setRequires(num_range_to);
+    add_numbers_end.setAllowEmpty();
 
     Param add_numbers_in_between = Param();
     add_numbers_in_between.setDescription("Adds numbers between each letter. Requires the params \"num-range-from\" and \"num-range-to\": BALL -> [B0ALL, BA0LL, BAL0L, B1ALL, BA1LL, ...]");
@@ -75,11 +81,13 @@ int main(int argc, char *argv[]) {
     add_numbers_in_between.setLongForm("numbers-between");
     add_numbers_in_between.setRequires(num_range_from);
     add_numbers_in_between.setRequires(num_range_to);
+    add_numbers_in_between.setAllowEmpty();
 
     Param mix_words = Param();
     mix_words.setDescription("Mixes words from the source file: [hello, bye, red] -> [hellobye, byehello, hellored, redhello, byered, redbye]");
     mix_words.setShortForm('w');
     mix_words.setLongForm("mix-words");
+    mix_words.setAllowEmpty();
 
     Param source_file = Param();
     source_file.setDescription("Tells which file has the words that will be permuted.");
@@ -91,7 +99,6 @@ int main(int argc, char *argv[]) {
     target_file.setDescription("Tells which file will store the permuted words.");
     target_file.setShortForm('t');
     target_file.setLongForm("target-file");
-    target_file.setAllowEmpty();
 
     std::vector<std::string> arguments(argv + 1, argv + argc);
     Options main_options = Options();
