@@ -31,13 +31,14 @@ int main(int argc, char *argv[]) {
     num_range_from.setDescription("Tells from which number to start");
     num_range_from.setShortForm('s');
     num_range_from.setLongForm("num-range-from");
+    num_range_from.setAllowEmpty();
 
 
     Param num_range_to = Param();
     num_range_to.setDescription("Tells the maximum number to be used in the range");
     num_range_to.setShortForm('w');
     num_range_to.setLongForm("num-range-to");
-
+    num_range_to.setAllowEmpty();
 
 
     Param lower_case = Param();
@@ -111,6 +112,8 @@ int main(int argc, char *argv[]) {
     main_options.addParam(mix_words);
     main_options.addParam(source_file);
     main_options.addParam(target_file);
+    main_options.addParam(num_range_from);
+    main_options.addParam(num_range_to);
     main_options.registerArgs(arguments);
 
     // SUPER important
