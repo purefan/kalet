@@ -1,4 +1,5 @@
 #include "permuter.h"
+#include "options.h"
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fstream>
@@ -19,9 +20,18 @@
 Permuter::Permuter() {}
 
 bool Permuter::allGood() {
-    return true ||
-        (this->fileExists(this->sourceFile) &&
-                this->canWriteToFile(this->targetFile));
+    std::cout << "Permuter::allGood() -> " << this->options["source-File"] << ENDL;
+    bool source_exists          = this->fileExists(this->options["source-file"]);
+    bool can_write_to_target    = this->canWriteToFile(this->options["target-file"]);
+
+    if (!source_exists) {
+        std::cerr << "The source file (" << this->options["source-file"] << ") does not exist" << ENDL;
+    }
+
+    if (!can_write_to_target) {
+        std::cerr << "Cannot write to target file \"" << this->options["target-file"] << "\"" << ENDL;
+    }
+    return source_exists && can_write_to_target;
 }
 
 /**
@@ -143,6 +153,21 @@ std::vector<std::wstring> Permuter::mixOfLowerCases(std::wstring original) {
     return lower_cases;
 }
 
+/**
+ * @brief Takes every word and adds it to the end of every other word
+ * @details [long description]
+ * @return [description]
+ */
+std::vector<std::wstring> Permuter::mixWords() {
+    std::vector<std::wstring> mixed;
+    for (std::vector<std::wstring>::iterator forward = this->sourceWords.begin(); forward != this->sourceWords.end(); forward++ ) {
+        for (std::vector<std::wstring>::iterator backward = this->sourceWords.begin(); backward != this->sourceWords.end(); backward++ ) {
+            mixed.push_back( (*forward) + (*backward) );
+        }
+     }
+     return mixed;
+}
+
 void Permuter::printVector(std::vector<std::wstring> original) {
     for (std::vector<std::wstring>::iterator i = original.begin(); i != original.end(); i++) {
         std::wcout << *i << ENDL;
@@ -204,7 +229,10 @@ std::vector<std::wstring> Permuter::addNumbers(std::vector<std::wstring> origina
 std::vector<std::wstring> Permuter::generatePasswords(std::wstring original) {
     std::vector<std::wstring> passwords;
     std::vector<std::wstring> mixedCases    = this->mixCases(original);
+    // if leet is enabled...
+    // std::vector<std::wstring> leet          = this->turnToLeet(mixedCases);
     std::vector<std::wstring> numeric       = this->addNumbers(mixedCases);
+
 
 
     passwords = this->mergeVectors(mixedCases, numeric);
@@ -218,7 +246,7 @@ std::vector<std::wstring> Permuter::generatePasswords(std::wstring original) {
 void Permuter::savePasswordsToFile(std::vector<std::wstring> words) {
     // std::cout << "savePermutationsToFile() -> "
     std::wofstream store;
-    store.open(this->targetFile);
+    store.open(this->options["targetFile"]);
 
     for (std::vector<std::wstring>::iterator ite = words.begin(); ite != words.end(); ite++) {
         std::wcout << std::wstring(L"savePasswordsToFile(vector<string>) -> Storing: ") << *ite << ENDL;
@@ -228,21 +256,29 @@ void Permuter::savePasswordsToFile(std::vector<std::wstring> words) {
 }
 
 void Permuter::run() {
-    if (true || this->fileExists(this->sourceFile) == true) {
+    if (this->allGood()) {
         std::vector<std::wstring> permutations;
-        std::cout << this->sourceFile << " <--> " << this->targetFile << ENDL;
-        this->sourceWords = this->fileToVector(this->sourceFile);
+        std::cout << this->options["sourceFile"] << " <--> " << this->options["targetFile"] << ENDL;
+        this->sourceWords = this->fileToVector(this->options["sourceFile"]);
+
+        if (this->options["mix-words"] != "") {
+            this->sourceWords = this->mixWords();
+        }
 
         std::cout << "Total words to permute: " << this->sourceWords.size() << ENDL;
-        for (std::vector<std::wstring>::iterator ite = this->sourceWords.begin(); ite != this->sourceWords.end(); ite++ ) {
+        /*for (std::vector<std::wstring>::iterator ite = this->sourceWords.begin(); ite != this->sourceWords.end(); ite++ ) {
              std::wcout << std::wstring(L"run() -> ") << *ite << ENDL;
              permutations = this->generatePasswords(*ite);
              this->savePasswordsToFile(permutations);
-        }
+        }*/
 
         // std::cout << "permutations[0]: " << permutations[0] << ENDL;
     } else {
         std::cout << "Not everything is ok" << ENDL;
     }
 
+}
+
+void Permuter::setOptions(Options main_options) {
+    this->options = main_options;
 }

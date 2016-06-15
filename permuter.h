@@ -1,10 +1,13 @@
 #include <string>
 #include <vector>
+#include "options.h"
+
 class Permuter {
 public:
     std::wstring currentWord;
     std::string sourceFile;
     std::string targetFile;
+    Options options;
 
     // This constructor sets the path to the file with common words
     Permuter();
@@ -16,7 +19,9 @@ public:
     std::vector<std::wstring> generatePasswords(std::wstring);
     std::vector<std::wstring> mixCases(std::wstring);
     std::vector<std::wstring> addNumbers(std::vector<std::wstring>);
+    std::vector<std::wstring> mixWords();
     void run();
+    void setOptions(Options);
 
 private:
     std::vector<std::wstring> sourceWords;
