@@ -14,11 +14,12 @@ Param::Param() {
     this->allow_empty = false;
 }
 
-void Param::setRequires(Param requireds) {}
-
-void Param::setShortForm(char short_form) {
-    this->short_form = short_form;
+Param::Param(int value) {
+    this->allow_empty = false;
+    this->setValue(value);
 }
+
+void Param::setRequires(Param requireds) {}
 
 void Param::setLongForm(std::string long_form) {
     this->long_form = long_form;
@@ -27,12 +28,6 @@ void Param::setLongForm(std::string long_form) {
 void Param::setValue(std::string value) {
     std::cout << "1. Setting value " << value << ENDL;
     this->str_value = value;
-    /*if (name == this->getLongForm() || name == this->getShortForm()) {
-
-    }
-    else {
-        std::cout << "The short value (" << this->getShortForm() << " does not match --> " << name << ENDL;
-    }*/
 }
 
 void Param::setValue(int value) {
@@ -46,19 +41,13 @@ void Param::setValue(bool value) {
 }
 
 void Param::setValue(std::string name, std::string value) {
-    if (name == this->getShortForm() || name == this->getLongForm()) {
+    if (name == this->getLongForm()) {
         this->str_value = value;
     }
 }
 
 std::string Param::getLongForm() {
     return this->long_form;
-}
-
-std::string Param::getShortForm() {
-    std::string out;
-    out.push_back(this->short_form);
-    return out;
 }
 
 std::string Param::getValue() {

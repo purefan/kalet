@@ -4,7 +4,6 @@
 class Param {
 
     bool            allow_empty;
-    char            short_form;
 
     std::string     description;
     std::string     long_form;
@@ -13,6 +12,7 @@ class Param {
 
 public:
     Param();
+    Param(int);
 
     std::string getShortForm();
     std::string getLongForm();
@@ -20,7 +20,6 @@ public:
     std::string getDescription();
 
     void setDescription(std::string);
-    void setShortForm(char);
     void setLongForm(std::string);
     void setValue(std::string);
     void setValue(int);
