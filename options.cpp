@@ -50,10 +50,30 @@ bool Options::hasCommands() {
 
 void Options::cmdHelp() {
     std::cout << "[ This is the cmd_help ]" << ENDL;
+    // find the longest param
+    int longest_param_length = this->getLengthLongestParam();
+    int distance_to_longest;
+    std::string padding = "";
+
     for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
-        std::cout << "-" << (*param_ite).getShortForm() << ENDL;
-        std::cout << "  --" << (*param_ite).getLongForm() << "\t\t" << (*param_ite).getDescription() << ENDL;
+        distance_to_longest = longest_param_length - (*param_ite).getLongForm().size();
+        padding = "";
+        for (int i = 0; i < distance_to_longest; ++i) {
+            padding += " ";
+        }
+
+        std::cout << " --" << (*param_ite).getLongForm() << padding << "\t" << (*param_ite).getDescription() << ENDL;
     }
+}
+
+int Options::getLengthLongestParam() {
+    int length = 0;
+    for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
+        if ((*param_ite).getLongForm().size() > length) {
+            length = (*param_ite).getLongForm().size();
+        }
+    }
+    return length;
 }
 
 /**
@@ -117,7 +137,7 @@ bool Options::areParamsOk() {
     for(std::vector<Param>::iterator param_ite = this->internal_params.begin(); param_ite != this->internal_params.end(); param_ite++) {
         temp_param = (*param_ite);
         if (!temp_param.allowsEmpty() && temp_param.getValue().size() < 1) {
-            std::cerr << "The param " << temp_param.getLongForm() << " does not allow an empty value" << ENDL;
+            std::cerr << "The param " << temp_param.getLongForm() << " does not allow an empty value, current value is: \"" << temp_param.getValue() << "\"" << ENDL;
             return false;
         }
     }

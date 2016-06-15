@@ -10,6 +10,7 @@ class Options {
 
         // like --source-file=<path>
         std::vector<Param> internal_params;
+        int getLengthLongestParam();
 
     public:
         void registerArgs(std::vector<std::string>);
