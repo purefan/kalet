@@ -19,6 +19,7 @@ public:
     std::vector<std::wstring> generatePasswords(std::wstring);
     std::vector<std::wstring> mixCases(std::wstring);
     std::vector<std::wstring> addNumbers(std::vector<std::wstring>);
+    std::vector<std::wstring> mixWords();
     void run();
     void setOptions(Options);
 
